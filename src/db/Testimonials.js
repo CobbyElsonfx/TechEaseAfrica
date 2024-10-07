@@ -12,15 +12,15 @@ const testimonials = [
     },
     {
       text: "Completing the Advanced Data Science and Analytics course at Techease Africa was an incredible experience. Over the 2-month period, I gained deep insights into data analysis, machine learning, and predictive modeling through hands-on projects and expert guidance. The curriculum was well-structured, and the instructors were always available to help with challenging concepts. This course has equipped me with the skills to solve real-world problems using data, and I would highly recommend it to anyone serious about advancing their career in data science!.",
-      name: "Lois Veracious",
-      title: "Developer",
+      name: "Peace Awotwe",
+      title: "Data Scientist",
       image: PeaceAwotweImg,
     },
     {
       text: "Completing the Advanced Graphic Design course at Techease Africa was an enriching experience. Over the 2 months, I honed my design skills and learned how to create visually compelling projects with industry-standard tools. The course was hands-on, with expert guidance from experienced instructors who provided personalized feedback. I highly recommend this course to anyone looking to elevate their graphic design abilities and produce professional-level work!",
       name: "Afram Ebenezer",
       title: "Graphic Desginer",
-      image: GladysAkuaku,
+      image: ,
     },
 
   ];
