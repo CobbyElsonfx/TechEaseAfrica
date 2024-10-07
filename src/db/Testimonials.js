@@ -20,7 +20,7 @@ const testimonials = [
       text: "Completing the Advanced Graphic Design course at Techease Africa was an enriching experience. Over the 2 months, I honed my design skills and learned how to create visually compelling projects with industry-standard tools. The course was hands-on, with expert guidance from experienced instructors who provided personalized feedback. I highly recommend this course to anyone looking to elevate their graphic design abilities and produce professional-level work!",
       name: "Afram Ebenezer",
       title: "Graphic Desginer",
-      image: ,
+      image:"",
     },
 
   ];
