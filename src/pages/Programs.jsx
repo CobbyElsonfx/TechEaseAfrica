@@ -49,9 +49,9 @@ function CoursesSection() {
           {courses.map((course, index) => (
             <div 
               key={index} 
-              className={`course-item flex ${index % 2 === 0 ? 'flex-col-reverse lg:flex-row-reverse' : 'flex-col md:flex-row'} items-center mb-10`}
+              className={`course-item flex px-4 md:px-0 ${index % 2 === 0 ? 'flex-col-reverse space-y-5 md:space-y-0  lg:flex-row-reverse' : 'flex-col md:flex-row  space-y-5 md:space-y-0'} items-center mb-10`}
             >
-              <div className="course-image w-full lg:w-1/2 h-full">
+              <div className="course-image w-full lg:w-1/2 h-full pt-3 md:pt-0">
                 <img 
                   src={course.image} 
                   alt={course.alt} 
