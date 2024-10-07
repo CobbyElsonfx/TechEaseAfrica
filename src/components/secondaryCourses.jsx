@@ -1,15 +1,14 @@
-
+import React, { useState } from "react";
 import {
   Accordion,
   AccordionHeader,
   AccordionBody,
 } from "@material-tailwind/react";
-import { useState } from "react";
-import {secondaryCoursesFromdb} from "../db/programs";
+import { secondaryCoursesFromdb } from "../db/programs";
 
 const CUSTOM_ANIMATION = {
-  mount: { scale: 1 },
-  unmount: { scale: 0.9 },
+  mount: { scale: 1, opacity: 1 },
+  unmount: { scale: 0.95, opacity: 0.8 },
 };
 
 function Icon({ id, open }) {
@@ -18,7 +17,7 @@ function Icon({ id, open }) {
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
       fill="currentColor"
-      className={`${id === open ? "rotate-180" : ""} h-5 w-5 transition-transform`}
+      className={`${id === open ? "rotate-180" : ""} h-6 w-6 transition-transform duration-300`}
     >
       <path
         fillRule="evenodd"
@@ -34,26 +33,29 @@ const SecondaryCourses = () => {
 
   const handleOpen = (value) => setOpen(open === value ? 0 : value);
 
-  // Courses object
-
-
   return (
-    <div className="space-y-2">
+    <div className="space-y-4">
       {secondaryCoursesFromdb.map((course) => (
         <Accordion
           key={course.id}
-          className="px-3"
+          className={`bg-white border border-gray-300 shadow-lg rounded-lg transition-all duration-300 ${
+            open === course.id ? "shadow-xl" : ""
+          }`}
           open={open === course.id}
           animate={CUSTOM_ANIMATION}
           icon={<Icon id={course.id} open={open} />}
         >
           <AccordionHeader
-            className="bg-gray-300 p-3 text-lg md:text-xl rounded-md"
+            className={`p-4 text-lg md:text-xl font-semibold text-gray-800 bg-gray-200 rounded-md transition-all duration-200 hover:bg-gray-300 ${
+              open === course.id ? "bg-gray-300" : ""
+            }`}
             onClick={() => handleOpen(course.id)}
           >
             {course.title}
           </AccordionHeader>
-          <AccordionBody>{course.description}</AccordionBody>
+          <AccordionBody className="p-5 text-gray-600 leading-relaxed bg-gray-50 rounded-md">
+            {course.description}
+          </AccordionBody>
         </Accordion>
       ))}
     </div>
