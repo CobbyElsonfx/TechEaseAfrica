@@ -18,12 +18,33 @@ const courses = [
 ];
 
 const secondaryCoursesFromdb = [
-  { id: 1, title: "Introduction to Blogging", description: "We're not always in the position that we want to be at. We're constantly growing. We're constantly making mistakes. We're constantly trying to express ourselves and actualize our dreams." },
-  { id: 2, title: "Introduction to Computing", description: "We're not always in the position that we want to be at. We're constantly growing. We're constantly making mistakes. We're constantly trying to express ourselves and actualize our dreams." },
-  { id: 3, title: "Introduction to C++", description: "We're not always in the position that we want to be at. We're constantly growing. We're constantly making mistakes. We're constantly trying to express ourselves and actualize our dreams." },
-  { id: 4, title: "introduction to UI/UX design", description: "We're not always in the position that we want to be at. We're constantly growing. We're constantly making mistakes. We're constantly trying to express ourselves and actualize our dreams." },
-  { id: 5, title: "Introduction to Database Managment", description: "We're not always in the position that we want to be at. We're constantly growing. We're constantly making mistakes. We're constantly trying to express ourselves and actualize our dreams." },
+  { 
+    id: 1, 
+    title: "Introduction to Blogging", 
+    description: "This course covers the essentials of starting and maintaining a successful blog. Students will learn how to choose a niche, create engaging content, use SEO strategies, and monetize their blogs to reach a larger audience."
+  },
+  { 
+    id: 2, 
+    title: "Introduction to Computing", 
+    description: "This course introduces students to the fundamentals of computing. Topics include understanding computer hardware and software, basic programming concepts, operating systems, and the impact of computing in today's digital world."
+  },
+  { 
+    id: 3, 
+    title: "Introduction to C++", 
+    description: "In this course, students will be introduced to the C++ programming language. The course covers key concepts like data types, control structures, functions, and object-oriented programming to build a strong foundation for coding in C++."
+  },
+  { 
+    id: 4, 
+    title: "Introduction to UI/UX Design", 
+    description: "This course explores the principles of User Interface (UI) and User Experience (UX) design. Students will learn how to create intuitive and aesthetically pleasing interfaces by focusing on user needs, design patterns, and prototyping tools."
+  },
+  { 
+    id: 5, 
+    title: "Introduction to Database Management", 
+    description: "This course provides an introduction to database systems and management. Students will learn about database design, SQL, data modeling, and how to use database management systems (DBMS) to organize, store, and retrieve data efficiently."
+  }
 ];
+
 
 
 export { secondaryCoursesFromdb, courses } 
