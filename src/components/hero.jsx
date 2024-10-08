@@ -12,7 +12,7 @@ const Hero = () => {
 
       {/* Hero Content */}
       <div className="hero-content text-center relative mt-20 z-10 p-4">
-        <div className="animate-fade-in-up">
+        <div className="animate-fade-in-up pt-[5rem] px-6 md:px-0 text-wrap">
           <h1 className="text-4xl sm:text-6xl lg:text-8xl font-bold text-white leading-tight tracking-wide">
             <span className="block font-semibold px-3 md:p-0 animate-type-writer">Launch Your Career</span>
             <span className="block text-teal-200 md:p-0">in Tech</span>
