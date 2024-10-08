@@ -7,9 +7,9 @@ function Programs() {
       {/* Main container */}
       <div className="container mx-auto py-8 px-4 md:px-6">
         {/* Main Heading */}
-        <h3 className="text-4xl md:text-5xl lg:text-6xl text-center font-extrabold text-gray-900 mb-8 tracking-wide relative">
+        <h3 className="text-2xl md:text-4xl lg:text-5xl text-center font-extrabold text-gray-900 mb-8 tracking-wide relative">
           <span className="text-primary">Our</span>
-          <span className="text-gray-800"> Programs</span>
+          <span className="text-gray-800 font-sans"> Programs</span>
           <span className="absolute block w-16 h-1 bg-primary rounded-full mt-4 left-1/2 transform -translate-x-1/2"></span>
         </h3>
 
