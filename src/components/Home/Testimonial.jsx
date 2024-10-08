@@ -8,16 +8,17 @@ const TestimonialSection = () => {
         <div className="grid items-center gap-4 xl:grid-cols-5">
           {/* Heading and description */}
           <div className="max-w-2xl mx-auto my-8 space-y-4 text-center xl:col-span-2 xl:text-left">
-            <h2 className="text-2xl md:text-4xl font-bold text-white  text-wrap">
-              What People Say {"  "}
-              <span className='text-primary md:m-1  bg-white p-2 md:p-3 mt-2 rounded-sm'>
-                About Us
-              </span>
-            </h2>
-            <p className="dark:text-gray-600 text-white">
-              Pri ex magna scaevola moderatius. Nullam accommodare no vix, est ei diceret alienum, et sit cetero malorum. Et sea iudico consequat, est sanctus adipisci ex.
-            </p>
-          </div>
+  <h2 className="text-2xl md:text-4xl font-bold text-white text-wrap">
+    What People Say {"  "}
+    <span className='text-primary md:m-1 bg-white p-2 md:p-3 mt-2 rounded-sm'>
+      About Us
+    </span>
+  </h2>
+  <p className="dark:text-gray-600 text-white">
+    Welcome to our community, where learning and innovation thrive! We are dedicated to empowering individuals through engaging courses and hands-on experiences, led by expert instructors who are passionate about helping you succeed.
+  </p>
+</div>
+
 
           {/* Testimonials grid */}
           <div className="p-6 xl:col-span-3">
