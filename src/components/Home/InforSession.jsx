@@ -55,6 +55,11 @@ function InfoSession() {
               {/* Custom bullet point */}
               <span>Discover custom financing option</span>
             </div>
+            <div className="flex items-center space-x-2">
+              <CheckCircleIcon className="h-5 w-5 text-primary" />{" "}
+              {/* Custom bullet point */}
+              <span>See how our bootcamp works</span>
+            </div>
           </div>
         </div>
       </div>

@@ -1,4 +1,6 @@
 import { Link } from "react-router-dom";
+import Logo from '../assets/logo.png';
+
 const Footer = () => {
     return (
         <footer className="bg-primary text-white py-10  bottom-0">
@@ -6,13 +8,11 @@ const Footer = () => {
                 {/* Column 1: About Us */}
                 <div>
                     <h2 className="text-lg font-semibold">About Us</h2>
-                    <p className="mt-4 text-sm">
-                        We provide excellent products and services. Reach out to us for the best offers and customer service.
-                    </p>
-                    <ul className="mt-4 space-y-1 text-sm">
-                        <li>• Customer satisfaction guaranteed</li>
-                        <li>• Secure and fast delivery</li>
-                    </ul>
+                    <p>
+              <span className='font-semibold'>TECHEASE </span>Africa, which is a subsidiary institution under KAYISH groups, was established two years ago. 
+              As part of its services, it used to give training and digital support to companies and professionals. 
+             
+            </p>
                 </div>
 
                 {/* Column 2: Useful Links */}
@@ -40,9 +40,9 @@ const Footer = () => {
                 {/* Column 3: Contact Info */}
                 <div className="lg:text-right">
                     <h2 className="text-lg font-semibold">Need help?</h2>
-                    <p className="mt-4 text-2xl font-medium">+233 558</p>
-                    <p className="mt-2 text-sm">Mon - Fri: 10am - 5pm</p>
-                    <p className="text-sm">Weekend: 10am - 3pm</p>
+                    <p className="mt-4 text-sm font-medium">+233 502547381/</p>
+                    <p className="mt-2 text-sm">+233 55811918</p>
+                    <p className="text-sm">+233 0554024046</p>
 
                     {/* Social Icons */}
                     <div className="mt-8 flex justify-end space-x-4">
@@ -67,6 +67,12 @@ const Footer = () => {
                     </div>
                 </div>
             </div>
+<div>
+<hr className="container mx-auto my-7"/>
+
+</div>
+            <img src={Logo} className="mx-auto w-80 h-auto"/>
+
             <hr className="container mx-auto my-7"/>
 
             <div className="mt-8 text-center text-sm text-gray-400">

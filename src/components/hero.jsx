@@ -2,7 +2,7 @@ import { Button } from "@material-tailwind/react";
 
 const Hero = () => {
   return (
-    <div className="hero overflow-hidden relative bg-gradient-to-r from-teal-400 via-blue-500 to-indigo-600 min-h-screen flex flex-col justify-center items-center">
+    <div className="hero overflow-hidden relative bg-gradient-to-r from-teal-400 via-blue-500 to-indigo-600 min-h-[70vh] md:min-h-screen flex flex-col justify-center items-center">
       {/* Abstract Shapes for Creativity */}
       <div className="absolute w-56 h-96 bg-blue-300 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-pulse -top-10 left-10"></div>
       <div className="absolute w-80 h-80 bg-pink-300 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-pulse -bottom-20 right-10"></div>
@@ -11,7 +11,7 @@ const Hero = () => {
       <div className="absolute inset-0 bg-black opacity-65 z-0"></div>
 
       {/* Hero Content */}
-      <div className="hero-content text-center relative z-10 p-4">
+      <div className="hero-content text-center relative mt-20 z-10 p-4">
         <div className="animate-fade-in-up">
           <h1 className="text-4xl sm:text-6xl lg:text-8xl font-bold text-white leading-tight tracking-wide">
             <span className="block font-semibold px-3 md:p-0 animate-type-writer">Launch Your Career</span>
