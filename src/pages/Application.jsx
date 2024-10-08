@@ -1,5 +1,3 @@
-
-
 import NavbarWithSimpleLinks from "../components/navbar";
 import Footer from "../components/footer";
 import { useState } from "react";
@@ -14,6 +12,7 @@ function ApplicationForm() {
     country: "",
     educationLevel: "",
     selectedCourse: "",
+    referralName: "", // Added field for referral
     agreementAccepted: false,
   });
 
@@ -46,7 +45,7 @@ function ApplicationForm() {
 
   // Handle adding/removing secondary courses
   const handleCourseChange = (course) => {
-    setSecondaryCourses((prevCourses) => 
+    setSecondaryCourses((prevCourses) =>
       prevCourses.includes(course)
         ? prevCourses.filter((c) => c !== course)
         : [...prevCourses, course]
@@ -76,175 +75,180 @@ function ApplicationForm() {
                 <>
                   <h1 className="text-2xl font-semibold">Enrollment Application Form</h1>
                   <form onSubmit={handleSubmit} className="divide-y divide-gray-200">
-                  <div className="py-8 text-base leading-6 space-y-4 text-gray-700 sm:text-lg sm:leading-7">
-                  {/* First Name */}
-                  <div className="relative">
-                    <input
-                      autoComplete="off"
-                      id="firstName"
-                      name="firstName"
-                      type="text"
-                      value={formData.firstName}
-                      onChange={handleChange}
-                      className="peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none focus:border-blue-600"
-                      placeholder="First Name"
-                    />
-                    <label
-                      htmlFor="firstName"
-                      className="absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm"
-                    >
-                      First Name
-                    </label>
-                  </div>
-
-                  {/* Last Name */}
-                  <div className="relative">
-                    <input
-                      autoComplete="off"
-                      id="lastName"
-                      name="lastName"
-                      type="text"
-                      value={formData.lastName}
-                      onChange={handleChange}
-                      className="peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none focus:border-blue-600"
-                      placeholder="Last Name"
-                    />
-                    <label
-                      htmlFor="lastName"
-                      className="absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm"
-                    >
-                      Last Name
-                    </label>
-                  </div>
-
-                  {/* Other Name */}
-                  <div className="relative">
-                    <input
-                      autoComplete="off"
-                      id="otherName"
-                      name="otherName"
-                      type="text"
-                      value={formData.otherName}
-                      onChange={handleChange}
-                      className="peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none focus:border-blue-600"
-                      placeholder="Other Name"
-                    />
-                    <label
-                      htmlFor="otherName"
-                      className="absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm"
-                    >
-                      Other Name
-                    </label>
-                  </div>
-
-                  {/* WhatsApp Number */}
-                  <div className="relative">
-                    <input
-                      autoComplete="off"
-                      id="whatsappNumber"
-                      name="whatsappNumber"
-                      type="text"
-                      value={formData.whatsappNumber}
-                      onChange={handleChange}
-                      className="peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none focus:border-blue-600"
-                      placeholder="WhatsApp Number"
-                    />
-                    <label
-                      htmlFor="whatsappNumber"
-                      className="absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm"
-                    >
-                      WhatsApp Number
-                    </label>
-                  </div>
-
-                  {/* Country of Origin (Select Dropdown) */}
-                  <div className="relative">
-                    <select
-                      id="country"
-                      name="country"
-                      value={formData.country}
-                      onChange={handleChange}
-                      className="h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none focus:border-blue-600"
-                    >
-                      <option className="text-sm" value="" disabled>Select your country</option>
-                      {countries.map((country, index) => (
-                        <option key={index} value={country}>
-                          {country}
-                        </option>
-                      ))}
-                    </select>
-                    <label
-                      htmlFor="country"
-                      className="absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm"
-                    >
-                      Country of Origin
-                    </label>
-                  </div>
-
-                  {/* Highest Level of Education (Select Dropdown) */}
-                  <div className="relative">
-                    <select
-                      id="educationLevel"
-                      name="educationLevel"
-                      value={formData.educationLevel}
-                      onChange={handleChange}
-                      className="h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none focus:border-blue-600"
-                    >
-                      <option value="" disabled>Select your education level</option>
-                      {educationLevels.map((level, index) => (
-                        <option key={index} value={level}>
-                          {level}
-                        </option>
-                      ))}
-                    </select>
-                    <label
-                      htmlFor="educationLevel"
-                      className="absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm"
-                    >
-                      Highest Level of Education
-                    </label>
-                  </div>
-
-                  {/* Course Selection (Radio Buttons) */}
-                  <div className="relative">
-                    <p className="mb-2 font-medium text-md" >Select a Course:</p>
-                    {courses.map((course, index) => (
-                      <div key={index} className="mb-2">
+                    <div className="py-8 text-base leading-6 space-y-4 text-gray-700 sm:text-lg sm:leading-7">
+                      {/* First Name */}
+                      <div className="relative">
                         <input
-                          type="radio"
-                          id={course}
-                          name="selectedCourse"
-                          value={course}
-                          checked={formData.selectedCourse === course}
+                          autoComplete="off"
+                          id="firstName"
+                          name="firstName"
+                          type="text"
+                          value={formData.firstName}
+                          onChange={handleChange}
+                          className="peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none focus:border-blue-600"
+                          placeholder="First Name"
+                        />
+                        <label
+                          htmlFor="firstName"
+                          className="absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm"
+                        >
+                          First Name
+                        </label>
+                      </div>
+
+                      {/* Last Name */}
+                      <div className="relative">
+                        <input
+                          autoComplete="off"
+                          id="lastName"
+                          name="lastName"
+                          type="text"
+                          value={formData.lastName}
+                          onChange={handleChange}
+                          className="peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none focus:border-blue-600"
+                          placeholder="Last Name"
+                        />
+                        <label
+                          htmlFor="lastName"
+                          className="absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm"
+                        >
+                          Last Name
+                        </label>
+                      </div>
+
+                      {/* Other Name */}
+                      <div className="relative">
+                        <input
+                          autoComplete="off"
+                          id="otherName"
+                          name="otherName"
+                          type="text"
+                          value={formData.otherName}
+                          onChange={handleChange}
+                          className="peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none focus:border-blue-600"
+                          placeholder="Other Name"
+                        />
+                        <label
+                          htmlFor="otherName"
+                          className="absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm"
+                        >
+                          Other Name
+                        </label>
+                      </div>
+
+                      {/* WhatsApp Number */}
+                      <div className="relative">
+                        <input
+                          autoComplete="off"
+                          id="whatsappNumber"
+                          name="whatsappNumber"
+                          type="text"
+                          value={formData.whatsappNumber}
+                          onChange={handleChange}
+                          className="peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none focus:border-blue-600"
+                          placeholder="WhatsApp Number"
+                        />
+                        <label
+                          htmlFor="whatsappNumber"
+                          className="absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm"
+                        >
+                          WhatsApp Number
+                        </label>
+                      </div>
+
+                      {/* Referral Name (Optional) */}
+                      <div className="relative">
+                        <input
+                          autoComplete="off"
+                          id="referralName"
+                          name="referralName"
+                          type="text"
+                          value={formData.referralName}
+                          onChange={handleChange}
+                          className="peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none focus:border-blue-600"
+                          placeholder="Enter Name of Referral (Optional)"
+                        />
+                        <label
+                          htmlFor="referralName"
+                          className="absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm"
+                        >
+                          Enter Name of Referral (Optional)
+                        </label>
+                      </div>
+
+                      {/* Country of Origin (Select Dropdown) */}
+                      <div className="relative">
+                        <select
+                          id="country"
+                          name="country"
+                          value={formData.country}
+                          onChange={handleChange}
+                          className="h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none focus:border-blue-600"
+                        >
+                          <option className="text-sm" value="" disabled>Select your country</option>
+                          {countries.map((country, index) => (
+                            <option key={index} value={country}>
+                              {country}
+                            </option>
+                          ))}
+                        </select>
+                        <label
+                          htmlFor="country"
+                          className="absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm"
+                        >
+                          Country of Origin
+                        </label>
+                      </div>
+
+                      {/* Highest Level of Education (Select Dropdown) */}
+                      <div className="relative">
+                        <select
+                          id="educationLevel"
+                          name="educationLevel"
+                          value={formData.educationLevel}
+                          onChange={handleChange}
+                          className="h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none focus:border-blue-600"
+                        >
+                          <option className="text-sm" value="" disabled>Select your education level</option>
+                          {educationLevels.map((level, index) => (
+                            <option key={index} value={level}>
+                              {level}
+                            </option>
+                          ))}
+                        </select>
+                        <label
+                          htmlFor="educationLevel"
+                          className="absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm"
+                        >
+                          Highest Level of Education
+                        </label>
+                      </div>
+
+                      {/* Terms Agreement Checkbox */}
+                      <div className="flex items-center">
+                        <input
+                          type="checkbox"
+                          name="agreementAccepted"
+                          id="agreementAccepted"
+                          checked={formData.agreementAccepted}
                           onChange={handleChange}
                           className="mr-2"
                         />
-                        <label htmlFor={course}>{course}</label>
+                        <label htmlFor="agreementAccepted" className="text-gray-700">
+                          I agree to the terms and conditions
+                        </label>
                       </div>
-                    ))}
-                  </div>
 
-                  {/* Accept Agreement */}
-                  <div className="relative">
-                    <input
-                      type="checkbox"
-                      id="agreement"
-                      name="agreementAccepted"
-                      checked={formData.agreementAccepted}
-                      onChange={handleChange}
-                      className="mr-2"
-                    />
-                    <label htmlFor="agreement">
-                      I accept the terms and conditions of this application.
-                    </label>
-                  </div>
-
-                  {/* Submit Button */}
-             
-                </div>
-                    <button type="submit" className="bg-blue-500 text-white rounded-md px-2 py-1 mt-4">
-                      Proceed to Course Selection
-                    </button>
+                      {/* Submit Button */}
+                      <div className="flex justify-center">
+                        <button
+                          type="submit"
+                          className="bg-primary hover:bg-blue-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                        >
+                          Submit
+                        </button>
+                      </div>
+                    </div>
                   </form>
                 </>
               )}
@@ -253,52 +257,53 @@ function ApplicationForm() {
               {step === 2 && (
                 <>
                   <h1 className="text-2xl font-semibold">Select Additional Courses</h1>
-                  <div className="mb-4">
-                    {courses.map((course, index) => (
-                      <div key={index}>
+                  <div className="my-6 space-y-4">
+                    {courses.map((course) => (
+                      <label key={course} className="block">
                         <input
                           type="checkbox"
-                          id={course}
-                          name={course}
-                          value={course}
                           checked={secondaryCourses.includes(course)}
                           onChange={() => handleCourseChange(course)}
-                          className="mr-2"
                         />
-                        <label htmlFor={course}>{course}</label>
-                      </div>
+                        <span className="ml-2">{course}</span>
+                      </label>
                     ))}
                   </div>
-                  <button onClick={handleFinalSubmit} className="bg-green-500 text-white rounded-md px-4 py-2">
-                    Submit and Enroll
-                  </button>
+                  <div className="flex justify-center">
+                    <button
+                      onClick={handleFinalSubmit}
+                      className="bg-primary hover:bg-blue-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                    >
+                      Submit Courses
+                    </button>
+                  </div>
                 </>
               )}
             </div>
           </div>
         </div>
-      </div>
 
-      <Footer />
-
-      {/* Modal */}
-      {showModal && (
-        <div className="fixed inset-0 bg-gray-600 bg-opacity-50 flex items-center justify-center">
-          <div className="bg-white p-6 rounded-lg">
-            <h2 className="text-xl font-bold mb-4">Congratulations!</h2>
-            <p>You have been successfully enrolled in the course.</p>
-            <button
-              className="mt-4 bg-blue-500 text-white px-4 py-2 rounded"
-              onClick={() => setShowModal(false)}
-            >
-              Close
-            </button>
+        {/* Modal */}
+        {showModal && (
+          <div className="fixed inset-0 bg-gray-500 bg-opacity-75 flex items-center justify-center z-50">
+            <div className="bg-white rounded-lg p-6">
+              <h2 className="text-2xl font-bold mb-4">Success!</h2>
+              <p>Your application has been submitted successfully!</p>
+              <div className="flex justify-center mt-6">
+                <button
+                  onClick={() => setShowModal(false)}
+                  className="bg-primary hover:bg-blue-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                >
+                  Close
+                </button>
+              </div>
+            </div>
           </div>
-        </div>
-      )}
+        )}
+      </div>
+      <Footer />
     </>
   );
 }
 
 export default ApplicationForm;
-
