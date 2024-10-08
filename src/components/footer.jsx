@@ -71,7 +71,7 @@ const Footer = () => {
 <hr className="container mx-auto my-7"/>
 
 </div>
-            <img src={Logo} className="mx-auto w-80 h-auto"/>
+            <img src={Logo} className="mx-auto  w-60 md:w-80 h-auto"/>
 
             <hr className="container mx-auto my-7"/>
 
