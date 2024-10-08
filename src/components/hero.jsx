@@ -11,7 +11,7 @@ const Hero = () => {
       <div className="absolute inset-0 bg-black opacity-65 z-0"></div>
 
       {/* Hero Content */}
-      <div className="hero-content text-center relative mt-20 z-10 p-4">
+      <div className="hero-content text-center relative mt-20 mb-20 z-10 p-4">
         <div className="animate-fade-in-up pt-[10rem] px-[3rem] md:px-0 text-wrap">
           <h1 className="text-4xl sm:text-6xl lg:text-8xl font-bold text-white leading-tight tracking-wide">
             <span className="font-semibold px-3 md:p-0 animate-type-writer">Launch Your Career</span>
@@ -24,6 +24,27 @@ const Hero = () => {
             Join Now
           </Button>
         </div>
+      </div>
+
+      {/* Scroll Down Icon */}
+      <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 flex flex-col items-center z-10">
+      <div className="animate-bounce w-10 h-10 rounded-full border-2 border-white flex justify-center items-center">
+      <svg
+              className="w-6 h-6 text-white"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M19 9l-7 7-7-7"
+              />
+            </svg>
+      </div>
+    
       </div>
     </div>
   );
