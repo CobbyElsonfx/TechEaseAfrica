@@ -20,7 +20,7 @@ function ApplicationForm() {
   const [secondaryCourses, setSecondaryCourses] = useState([]); // To manage additional courses
   const [showModal, setShowModal] = useState(false); // To show the modal
 
-  const courses = ["Web Development", "Data Science", "UI/UX Design", "Mobile App Development"];
+  const courses = ["Introduction to Blogging", "Introduction to Computing", "Introduction to C++"];
   const countries = ["Ghana", "Nigeria", "Kenya", "South Africa"];
   const educationLevels = ["High School", "Diploma", "Bachelor's Degree", "Master's Degree", "PhD"];
 
@@ -74,8 +74,8 @@ function ApplicationForm() {
               {step === 1 && (
                 <>
                   <h1 className="text-2xl font-semibold">Enrollment Application Form</h1>
-                  <form onSubmit={handleSubmit} className="divide-y divide-gray-200">
-                    <div className="py-8 text-base leading-6 space-y-4 text-gray-700 sm:text-lg sm:leading-7">
+                  <form onSubmit={handleSubmit} className="divide-y space-y-7 divide-gray-200">
+                    <div className="py-8 text-base leading-6 space-y-7 px-3 mx-3 md:px-0 md:mx-3 text-gray-700 sm:text-lg sm:leading-7">
                       {/* First Name */}
                       <div className="relative">
                         <input
@@ -187,7 +187,7 @@ function ApplicationForm() {
                         >
                           <option className="text-sm" value="" disabled>Select your country</option>
                           {countries.map((country, index) => (
-                            <option key={index} value={country}>
+                            <option className="text-sm" key={index} value={country}>
                               {country}
                             </option>
                           ))}
@@ -209,9 +209,9 @@ function ApplicationForm() {
                           onChange={handleChange}
                           className="h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none focus:border-blue-600"
                         >
-                          <option className="text-sm" value="" disabled>Select your education level</option>
+                          <option className="" value="" disabled>Select your education level</option>
                           {educationLevels.map((level, index) => (
-                            <option key={index} value={level}>
+                            <option className="text-sm" key={index} value={level}>
                               {level}
                             </option>
                           ))}
