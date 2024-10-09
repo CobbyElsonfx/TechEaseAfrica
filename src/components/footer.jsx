@@ -41,8 +41,8 @@ const Footer = () => {
                 <div className="lg:text-right">
                     <h2 className="text-lg font-semibold">Need help?</h2>
                     <p className="mt-4 text-sm font-medium">+233 502547381</p>
-                    <p className="mt-2 text-sm">+233 55811918</p>
-                    <p className="text-sm">+233 0554024046</p>
+                    <p className="mt-2 text-sm">+233 558119187</p>
+                    <p className="text-sm">+233 554024046</p>
 
                     {/* Social Icons */}
                     <div className="mt-8 flex justify-end space-x-4">
