@@ -1,5 +1,6 @@
 import NavbarWithSimpleLinks from "../components/navbar";
 import Footer from "../components/footer";
+import SuccessModal from "../components/successModal";
 import { useState } from "react";
 
 function ApplicationForm() {
@@ -14,13 +15,15 @@ function ApplicationForm() {
     selectedCourse: "",
     referralName: "", // Added field for referral
     agreementAccepted: false,
+    wantsAdditionalCourses: null, // Track if user wants additional courses
   });
 
   const [step, setStep] = useState(1); // Step state to control the flow of the form
   const [secondaryCourses, setSecondaryCourses] = useState([]); // To manage additional courses
   const [showModal, setShowModal] = useState(false); // To show the modal
 
-  const courses = ["Introduction to Blogging", "Introduction to Computing", "Introduction to C++"];
+  const primaryCourses = ["Introduction to Blogging", "Introduction to Computing", "Introduction to C++"];
+  const secondaryCoursesList = ["Advanced Blogging", "Web Development Basics", "Python for Beginners"];
   const countries = ["Ghana", "Nigeria", "Kenya", "South Africa"];
   const educationLevels = ["High School", "Diploma", "Bachelor's Degree", "Master's Degree", "PhD"];
 
@@ -33,17 +36,17 @@ function ApplicationForm() {
     });
   };
 
-  // Move to the course selection step
+  // Move to the next step
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (formData.agreementAccepted) {
+    if (formData.selectedCourse && formData.agreementAccepted) {
       setStep(2); // Move to the next step
     } else {
-      alert("You must accept the agreement before submitting.");
+      alert("Please select a primary course and accept the agreement before submitting.");
     }
   };
 
-  // Handle adding/removing secondary courses
+  // Handle secondary course selection
   const handleCourseChange = (course) => {
     setSecondaryCourses((prevCourses) =>
       prevCourses.includes(course)
@@ -52,9 +55,19 @@ function ApplicationForm() {
     );
   };
 
-  // Final submission after course selection
+  // Handle final submission or move to secondary courses step
   const handleFinalSubmit = () => {
-    setShowModal(true); // Show the modal
+    if (formData.wantsAdditionalCourses === "yes") {
+      setStep(3); // Move to secondary course selection
+    } else {
+      // Proceed to submission
+      setShowModal(true); // Show success modal
+    }
+  };
+
+  // Final submission with secondary courses
+  const handleSecondaryCourseSubmit = () => {
+    setShowModal(true); // Show success modal
     console.log("Form submitted with selected courses", {
       formData,
       secondaryCourses,
@@ -76,9 +89,11 @@ function ApplicationForm() {
                   <h1 className="text-2xl font-semibold">Enrollment Application Form</h1>
                   <form onSubmit={handleSubmit} className="divide-y space-y-7 divide-gray-200">
                     <div className="py-8 text-base leading-6 space-y-7 px-3 mx-3 md:px-0 md:mx-3 text-gray-700 sm:text-lg sm:leading-7">
-                      {/* First Name */}
-                      <div className="relative">
+                      {/* Form fields for personal details (firstName, lastName, etc.) */}
+                        {/* First Name */}
+                        <div className="relative">
                         <input
+                          required
                           autoComplete="off"
                           id="firstName"
                           name="firstName"
@@ -99,6 +114,7 @@ function ApplicationForm() {
                       {/* Last Name */}
                       <div className="relative">
                         <input
+                          required
                           autoComplete="off"
                           id="lastName"
                           name="lastName"
@@ -119,6 +135,7 @@ function ApplicationForm() {
                       {/* Other Name */}
                       <div className="relative">
                         <input
+                        required
                           autoComplete="off"
                           id="otherName"
                           name="otherName"
@@ -142,11 +159,13 @@ function ApplicationForm() {
                           autoComplete="off"
                           id="whatsappNumber"
                           name="whatsappNumber"
-                          type="text"
+                          required
+                          type="number"
+                          maxLength='10'
                           value={formData.whatsappNumber}
                           onChange={handleChange}
                           className="peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none focus:border-blue-600"
-                          placeholder="WhatsApp Number"
+                          placeholder="+233 558 000000"
                         />
                         <label
                           htmlFor="whatsappNumber"
@@ -172,13 +191,14 @@ function ApplicationForm() {
                           htmlFor="referralName"
                           className="absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm"
                         >
-                          Enter Name of Referral (Optional)
+                          Enter Name of Referral (Ambassordor)
                         </label>
                       </div>
 
                       {/* Country of Origin (Select Dropdown) */}
                       <div className="relative">
                         <select
+                        required
                           id="country"
                           name="country"
                           value={formData.country}
@@ -203,6 +223,7 @@ function ApplicationForm() {
                       {/* Highest Level of Education (Select Dropdown) */}
                       <div className="relative">
                         <select
+                        required
                           id="educationLevel"
                           name="educationLevel"
                           value={formData.educationLevel}
@@ -223,8 +244,50 @@ function ApplicationForm() {
                           Highest Level of Education
                         </label>
                       </div>
+                      
 
-                      {/* Terms Agreement Checkbox */}
+                      {/* Primary Course Selection (Radio Buttons) */}
+                      <div className="relative">
+                        <p className="font-semibold">Select Primary Course</p>
+                        {primaryCourses.map((course) => (
+                          <label key={course} className="block">
+                            <input
+                              type="radio"
+                              name="selectedCourse"
+                              value={course}
+                              checked={formData.selectedCourse === course}
+                              onChange={handleChange}
+                              required
+                            />
+                            <span className="ml-2">{course}</span>
+                          </label>
+                        ))}
+                      </div>
+
+                      {/* Ask if they want to add additional courses */}
+                      <div className="relative">
+                        <p className="font-semibold">Do you want to offer additional courses at a discount?</p>
+                        <label className="block">
+                          <input
+                            type="radio"
+                            name="wantsAdditionalCourses"
+                            value="yes"
+                            checked={formData.wantsAdditionalCourses === "yes"}
+                            onChange={handleChange}
+                          />
+                          <span className="ml-2">Yes</span>
+                        </label>
+                        <label className="block">
+                          <input
+                            type="radio"
+                            name="wantsAdditionalCourses"
+                            value="no"
+                            checked={formData.wantsAdditionalCourses === "no"}
+                            onChange={handleChange}
+                          />
+                          <span className="ml-2">No</span>
+                        </label>
+                      </div>
                       <div className="flex items-center">
                         <input
                           type="checkbox"
@@ -253,12 +316,28 @@ function ApplicationForm() {
                 </>
               )}
 
-              {/* Step 2: Course Selection */}
+              {/* Step 2: Final confirmation before secondary course selection */}
               {step === 2 && (
+                <>
+                  <h1 className="text-2xl font-semibold">Final Confirmation</h1>
+                  <p>Would you like to add additional courses at a discount?</p>
+                  <div className="flex justify-center mt-4">
+                    <button
+                      onClick={handleFinalSubmit}
+                      className="bg-primary hover:bg-blue-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                    >
+                      Continue
+                    </button>
+                  </div>
+                </>
+              )}
+
+              {/* Step 3: Secondary Course Selection */}
+              {step === 3 && (
                 <>
                   <h1 className="text-2xl font-semibold">Select Additional Courses</h1>
                   <div className="my-6 space-y-4">
-                    {courses.map((course) => (
+                    {secondaryCoursesList.map((course) => (
                       <label key={course} className="block">
                         <input
                           type="checkbox"
@@ -271,7 +350,7 @@ function ApplicationForm() {
                   </div>
                   <div className="flex justify-center">
                     <button
-                      onClick={handleFinalSubmit}
+                      onClick={handleSecondaryCourseSubmit}
                       className="bg-primary hover:bg-blue-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
                     >
                       Submit Courses
@@ -279,27 +358,12 @@ function ApplicationForm() {
                   </div>
                 </>
               )}
+
+              {/* Success Modal */}
+              {showModal && <SuccessModal setShowModal={setShowModal} />}
             </div>
           </div>
         </div>
-
-        {/* Modal */}
-        {showModal && (
-          <div className="fixed inset-0 bg-gray-500 bg-opacity-75 flex items-center justify-center z-50">
-            <div className="bg-white rounded-lg p-6">
-              <h2 className="text-2xl font-bold mb-4">Success!</h2>
-              <p>Your application has been submitted successfully!</p>
-              <div className="flex justify-center mt-6">
-                <button
-                  onClick={() => setShowModal(false)}
-                  className="bg-primary hover:bg-blue-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-                >
-                  Close
-                </button>
-              </div>
-            </div>
-          </div>
-        )}
       </div>
       <Footer />
     </>
