@@ -22,8 +22,8 @@ function ApplicationForm() {
   const [secondaryCourses, setSecondaryCourses] = useState([]); // To manage additional courses
   const [showModal, setShowModal] = useState(false); // To show the modal
 
-  const primaryCourses = ["Introduction to Blogging", "Introduction to Computing", "Introduction to C++"];
-  const secondaryCoursesList = ["Advanced Blogging", "Web Development Basics", "Python for Beginners"];
+  const primaryCourses = ["Advance Website Development ", "Advance Frontend Engineering", "Advance Graphic Designing","Advance Data Science & Analytics","Advance Social Media Marketing"];
+  const secondaryCoursesList = ["Introduction to Blogging", "Introduction to Computing", "Introduction to C++", "Introduction to UI/UX Design", "Introduction to Database Management"];
   const countries = ["Ghana", "Nigeria", "Kenya", "South Africa"];
   const educationLevels = ["High School", "Diploma", "Bachelor's Degree", "Master's Degree", "PhD"];
 
@@ -39,12 +39,38 @@ function ApplicationForm() {
   // Move to the next step
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (formData.selectedCourse && formData.agreementAccepted) {
-      setStep(2); // Move to the next step
+    if (formData.selectedCourse && formData.agreementAccepted  ) {
+      if(formData.wantsAdditionalCourses === "yes"){
+        setStep(3)
+      }
+      else{
+        setStep(2)
+
+      }
+      ; // Move to the next step
     } else {
       alert("Please select a primary course and accept the agreement before submitting.");
     }
   };
+
+    // Handle final submission or move to secondary courses step
+  const handleFinalSubmit = () => {
+    if (formData.wantsAdditionalCourses === "yes") {
+      setStep(4); // Move to secondary course selection
+    } else {
+      // Proceed to submission
+      setShowModal(true); // Show success modal
+    }
+  };
+
+  // const handleFinalSubmitForNo  = () => {
+  //   if (formData.wantsAdditionalCourses === "no") {
+  //     setStep(3); // Move to secondary course selection
+  //   } else {
+  //     // Proceed to submission
+  //     setShowModal(true); // Show success modal
+  //   }
+  // };
 
   // Handle secondary course selection
   const handleCourseChange = (course) => {
@@ -55,15 +81,7 @@ function ApplicationForm() {
     );
   };
 
-  // Handle final submission or move to secondary courses step
-  const handleFinalSubmit = () => {
-    if (formData.wantsAdditionalCourses === "yes") {
-      setStep(3); // Move to secondary course selection
-    } else {
-      // Proceed to submission
-      setShowModal(true); // Show success modal
-    }
-  };
+
 
   // Final submission with secondary courses
   const handleSecondaryCourseSubmit = () => {
@@ -135,7 +153,7 @@ function ApplicationForm() {
                       {/* Other Name */}
                       <div className="relative">
                         <input
-                        required
+                     
                           autoComplete="off"
                           id="otherName"
                           name="otherName"
@@ -320,6 +338,21 @@ function ApplicationForm() {
               {step === 2 && (
                 <>
                   <h1 className="text-2xl font-semibold">Final Confirmation</h1>
+                  <p>Almost there!, Click on continue</p>
+                  <div className="flex justify-center mt-4">
+                    <button
+                      onClick={handleFinalSubmit}
+                      className="bg-primary hover:bg-blue-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                    >
+                      Continue
+                    </button>
+                  </div>
+                </>
+              )}
+
+{step === 3 && (
+                <>
+                  <h1 className="text-2xl font-semibold">Final Confirmation</h1>
                   <p>Would you like to add additional courses at a discount?</p>
                   <div className="flex justify-center mt-4">
                     <button
@@ -333,7 +366,7 @@ function ApplicationForm() {
               )}
 
               {/* Step 3: Secondary Course Selection */}
-              {step === 3 && (
+              {step === 4 && (
                 <>
                   <h1 className="text-2xl font-semibold">Select Additional Courses</h1>
                   <div className="my-6 space-y-4">

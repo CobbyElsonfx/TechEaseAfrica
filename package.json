@@ -12,7 +12,9 @@
   "dependencies": {
     "@heroicons/react": "^2.1.5",
     "@material-tailwind/react": "^2.1.10",
+    "@react-email/components": "^0.0.25",
     "flowbite-react": "^0.10.2",
+    "nodemailer": "^6.9.15",
     "pagedone": "^1.2.2",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
