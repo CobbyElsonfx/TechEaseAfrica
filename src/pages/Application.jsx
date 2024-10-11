@@ -2,6 +2,9 @@ import NavbarWithSimpleLinks from "../components/navbar";
 import Footer from "../components/footer";
 import SuccessModal from "../components/successModal";
 import { useState } from "react";
+const sheeturl = import.meta.env.VITE_API_GOOGLESCRIPT ;
+const emailurl = import.meta.env.VITE_API_EMAIL;
+
 
 function ApplicationForm() {
   // State to handle form inputs
@@ -64,8 +67,8 @@ function ApplicationForm() {
       }
 
       try {
-        const emailUrl = proccess.env.EmailUrl;
-        const response = await fetch(emailUrl, {
+    
+        const response = await fetch(emailurl, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -80,14 +83,14 @@ function ApplicationForm() {
           console.error("Email sending failed.");
         }
       } catch (error) {
-        console.error("Error submitting form:", error);
+        console.error(error);
       }
 
 
     
       try {
-        const googleScriptUrl = process.env.GoogleScriptUrl;
-        const response = await fetch(googleScriptUrl, {
+        console.log("Sheet URL", sheeturl, "and", emailurl);
+        const response = await fetch(sheeturl, {
           method: "POST",
           body: JSON.stringify(formData),
           mode: "no-cors", // Will bypass CORS issues
