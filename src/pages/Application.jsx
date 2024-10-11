@@ -60,10 +60,34 @@ function ApplicationForm() {
         setStep(4); // Move to secondary course selection
       } else {
         setShowModal(true); // Show success modal
+        
       }
+
+      try {
+        const emailUrl = proccess.env.EmailUrl;
+        const response = await fetch(emailUrl, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formData),
+        });
+    
+        const data = await response.json();
+        if (data.status === "success") {
+          setShowModal(true); // Email sent successfully
+        } else {
+          console.error("Email sending failed.");
+        }
+      } catch (error) {
+        console.error("Error submitting form:", error);
+      }
+
+
     
       try {
-        const response = await fetch("https://script.google.com/macros/s/AKfycbxne8_bOmTNQEYtmq_r4Y6rA2S5Wzdrw7srukkn4iJv9b4T9ECYCvnPv5JmMAyiiRNF9w/exec", {
+        const googleScriptUrl = process.env.GoogleScriptUrl;
+        const response = await fetch(googleScriptUrl, {
           method: "POST",
           body: JSON.stringify(formData),
           mode: "no-cors", // Will bypass CORS issues
