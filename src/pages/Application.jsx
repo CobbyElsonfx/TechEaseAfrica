@@ -9,6 +9,7 @@ function ApplicationForm() {
     firstName: "",
     lastName: "",
     otherName: "",
+    email: "",
     whatsappNumber: "",
     country: "",
     educationLevel: "",
@@ -54,14 +55,34 @@ function ApplicationForm() {
   };
 
     // Handle final submission or move to secondary courses step
-  const handleFinalSubmit = () => {
-    if (formData.wantsAdditionalCourses === "yes") {
-      setStep(4); // Move to secondary course selection
-    } else {
-      // Proceed to submission
-      setShowModal(true); // Show success modal
-    }
-  };
+    const handleFinalSubmit = async () => {
+      if (formData.wantsAdditionalCourses === "yes") {
+        setStep(4); // Move to secondary course selection
+      } else {
+        setShowModal(true); // Show success modal
+      }
+    
+      try {
+        const response = await fetch("https://script.google.com/macros/s/AKfycbxne8_bOmTNQEYtmq_r4Y6rA2S5Wzdrw7srukkn4iJv9b4T9ECYCvnPv5JmMAyiiRNF9w/exec", {
+          method: "POST",
+          body: JSON.stringify(formData),
+          mode: "no-cors", // Will bypass CORS issues
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
+    
+        const data = await response.json();
+        if (data.status === "success") {
+          setShowModal(true);
+        } else {
+          console.error("Form submission failed.");
+        }
+      } catch (error) {
+        console.error("Error submitting form:", error);
+      }
+    };
+    
 
   // const handleFinalSubmitForNo  = () => {
   //   if (formData.wantsAdditionalCourses === "no") {
@@ -168,6 +189,26 @@ function ApplicationForm() {
                           className="absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm"
                         >
                           Other Name
+                        </label>
+                      </div>
+                               {/* WhatsApp Number */}
+                               <div className="relative">
+                        <input
+                          autoComplete="off"
+                          id="email"
+                          name="email"
+                          required
+                          type="email"
+                          value={formData.email}
+                          onChange={handleChange}
+                          className="peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none focus:border-blue-600"
+                          placeholder="teachafrica@gmail.com"
+                        />
+                        <label
+                          htmlFor="email"
+                          className="absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm"
+                        >
+                        Email
                         </label>
                       </div>
 
