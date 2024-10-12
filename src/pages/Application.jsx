@@ -319,7 +319,7 @@ function ApplicationForm() {
                           htmlFor="referralName"
                           className="absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm"
                         >
-                          Enter Name of Referral (Ambassordor)
+                          Enter Name of Referral (Ambassador)
                         </label>
                       </div>
 
