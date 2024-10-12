@@ -2,12 +2,15 @@ import NavbarWithSimpleLinks from "../components/navbar";
 import Footer from "../components/footer";
 import SuccessModal from "../components/successModal";
 import { useState } from "react";
+import countries from "../db/countries";
 const sheeturl = import.meta.env.VITE_API_GOOGLESCRIPT ;
 const emailurl = import.meta.env.VITE_API_EMAIL;
 
 
+
 function ApplicationForm() {
   // State to handle form inputs
+  
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -28,18 +31,26 @@ function ApplicationForm() {
 
   const primaryCourses = ["Advance Website Development ", "Advance Frontend Engineering", "Advance Graphic Designing","Advance Data Science & Analytics","Advance Social Media Marketing"];
   const secondaryCoursesList = ["Introduction to Blogging", "Introduction to Computing", "Introduction to C++", "Introduction to UI/UX Design", "Introduction to Database Management"];
-  const countries = ["Ghana", "Nigeria", "Kenya", "South Africa"];
   const educationLevels = ["High School", "Diploma", "Bachelor's Degree", "Master's Degree", "PhD"];
 
   // Handle form input changes
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
-    setFormData({
-      ...formData,
-      [name]: type === "checkbox" ? checked : value,
-    });
+    
+    // Update form data and keep the WhatsApp country code prefix intact
+    if (name === "whatsappNumber" && value.length >= formData.whatsappNumber.length) {
+      setFormData({
+        ...formData,
+        [name]: value,
+      });
+    } else {
+      setFormData({
+        ...formData,
+        [name]: type === "checkbox" ? checked : value,
+      });
+    }
   };
-
+  
   // Move to the next step
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -238,28 +249,59 @@ function ApplicationForm() {
                         Email
                         </label>
                       </div>
+  {/* Country of Origin (Select Dropdown with Flags) */}
+<div className="relative">
+  <select
+    required
+    id="country"
+    name="country"
+    value={formData.country}
+    onChange={(e) => {
+      const selectedCountry = countries.find(country => country.name === e.target.value);
+      setFormData({
+        ...formData,
+        country: e.target.value,
+        whatsappNumber: selectedCountry.code // Automatically set WhatsApp country code
+      });
+    }}
+    className="h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none focus:border-blue-600"
+  >
+    <option value="" disabled>Select your country</option>
+    {countries.map((country, index) => (
+      <option key={index} value={country.name}>
+        {country.flag} {country.name}
+      </option>
+    ))}
+  </select>
+  <label
+    htmlFor="country"
+    className="absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm"
+  >
+    Country of Origin
+  </label>
+</div>
 
-                      {/* WhatsApp Number */}
-                      <div className="relative">
-                        <input
-                          autoComplete="off"
-                          id="whatsappNumber"
-                          name="whatsappNumber"
-                          required
-                          type="number"
-                          maxLength='10'
-                          value={formData.whatsappNumber}
-                          onChange={handleChange}
-                          className="peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none focus:border-blue-600"
-                          placeholder="+233 558 000000"
-                        />
-                        <label
-                          htmlFor="whatsappNumber"
-                          className="absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm"
-                        >
-                          WhatsApp Number
-                        </label>
-                      </div>
+{/* WhatsApp Number (with auto country code) */}
+<div className="relative">
+  <input
+    autoComplete="off"
+    id="whatsappNumber"
+    name="whatsappNumber"
+    required
+    type="text"
+    value={formData.whatsappNumber}
+    onChange={handleChange}
+    className="peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none focus:border-blue-600"
+    placeholder="WhatsApp Number"
+  />
+  <label
+    htmlFor="whatsappNumber"
+    className="absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm"
+  >
+    WhatsApp Number
+  </label>
+</div>
+
 
                       {/* Referral Name (Optional) */}
                       <div className="relative">
@@ -282,29 +324,8 @@ function ApplicationForm() {
                       </div>
 
                       {/* Country of Origin (Select Dropdown) */}
-                      <div className="relative">
-                        <select
-                        required
-                          id="country"
-                          name="country"
-                          value={formData.country}
-                          onChange={handleChange}
-                          className="h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none focus:border-blue-600"
-                        >
-                          <option className="text-sm" value="" disabled>Select your country</option>
-                          {countries.map((country, index) => (
-                            <option className="text-sm" key={index} value={country}>
-                              {country}
-                            </option>
-                          ))}
-                        </select>
-                        <label
-                          htmlFor="country"
-                          className="absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm"
-                        >
-                          Country of Origin
-                        </label>
-                      </div>
+
+
 
                       {/* Highest Level of Education (Select Dropdown) */}
                       <div className="relative">

@@ -32,7 +32,7 @@ const TechEaseBlogLayout = () => {
                 <ul className="list-none list-inside space-y-5">
                   <li><FaBookOpen className="inline mr-2 text-tea-600" /> Expert-led live classes</li>
                   <li><FaHandsHelping className="inline mr-2 text-tea-600" /> Access to comprehensive learning materials</li>
-                  <li><FaUsers className="inline mr-2 text-tea-600" /> 4 weeks dedicated mentorship/internship training</li>
+                  <li><FaUsers className="inline mr-2 text-tea-600" /> 8 weeks dedicated mentorship/internship training</li>
                 </ul>
               </div>
               {/* Additional Columns */}
