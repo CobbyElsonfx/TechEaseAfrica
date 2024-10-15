@@ -13,6 +13,8 @@ import InfoSession from "../components/Home/InforSession";
 import RedefinePossible from "../components/Home/redefinePossibility";
 import TestimonialSection from "../components/Home/Testimonial";
 import MissionVisionSection from "../components/Home/missionAndVision";
+import ContactUs from "../components/Home/contactUs";
+import Faq from "../components/Home/Faq";
 
 function Home() {
   return (
@@ -43,9 +45,12 @@ function Home() {
     <SimpleSteps/>
     <Programs />
     <InfoSession/>
+    
 
     <TestimonialSection/>
     <RedefinePossible/>
+    <Faq/>
+    <ContactUs/>
 
     <Footer />
 

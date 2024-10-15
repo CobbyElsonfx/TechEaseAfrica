@@ -1,5 +1,5 @@
 import AboutUs from "../components/About/aboutUs"
-import NavbarWithSimpleLinks from "../components/navbar"
+import NavbarWithSimpleLinks from "../components/secondNav"
 import Footer from "../components/footer"
 
 

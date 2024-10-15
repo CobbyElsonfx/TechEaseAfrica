@@ -8,7 +8,7 @@ const TechEaseBlogLayout = () => {
           {/* Main Description Column */}
           <div className="md:col-span-1 space-y-5 text-lg text-tea-600"> {/* Apply your primary color here */}
             <p>
-              <span className='font-semibold'>TECHEASE </span>Africa, which is a subsidiary institution under KAYISH groups, was established two years ago. 
+              <span className='font-semibold'>TECHEASE </span>Africa, which is a subsidiary institution v under KAYISH groups, was established two years ago. 
               As part of its services, it used to give training and digital support to companies and professionals. 
               To expand its territories, it decided to absorb each person who is willing and of sound mind to be taught 
               high-demand digital skills to elevate and add value to their life as the world changes into an AI world 

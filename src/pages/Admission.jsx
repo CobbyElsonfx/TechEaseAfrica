@@ -1,5 +1,5 @@
 import Footer from "../components/footer"
-import NavbarWithSimpleLinks from "../components/navbar"
+import NavbarWithSimpleLinks from "../components/secondNav"
 import AdmissionInfo from "../components/Home/admission"
 import Hero from "../components/Admission/hero"
 

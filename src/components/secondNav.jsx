@@ -17,7 +17,7 @@ function NavItem({ label, to }) {
       <Typography
         as="li"
         color="white"
-        className="p-1 font-medium text-white transition duration-300 hover:text-teal-300 cursor-pointer"
+        className="p-1 font-medium text-white transition duration-300 hover:text-teal-100 cursor-pointer"
       >
         {label}
       </Typography>
@@ -49,7 +49,7 @@ export function NavbarWithSimpleLinks() {
   }, []);
 
   return (
-    <Navbar className="bg-primary border-0 z-50 backdrop-blur-sm bg-opacity-60 sticky top-0" fullWidth>
+    <Navbar className="bg-primary border-0 z-50 backdrop-blur-sm sticky top-0" fullWidth>
       <div className="container mx-auto flex items-center justify-between text-white py-2">
         <Link to="/">
           <Typography
@@ -98,7 +98,7 @@ export function NavbarWithSimpleLinks() {
           <NavList />
           {/* Enroll Now Button for Mobile */}
           <Link to="/apply">
-            <Button className="mt-4 bg-teal-500 text-white px-5 py-2 rounded-lg w-48 hover:bg-teal-400 transition duration-300 shadow-lg">
+            <Button className="mt-4 bg-teal-500 text-white px-5 py-2 rounded-lg w-48 hover:bg-teal-800 transition duration-300 shadow-lg">
               Enroll Now
             </Button>
           </Link>

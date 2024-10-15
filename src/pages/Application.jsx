@@ -1,4 +1,4 @@
-import NavbarWithSimpleLinks from "../components/navbar";
+import NavbarWithSimpleLinks from "../components/secondNav";
 import Footer from "../components/footer";
 import SuccessModal from "../components/successModal";
 import { useState } from "react";
