@@ -13,7 +13,7 @@ function simpleSteps() {
               Be Your Own Boss or Get Hired in <span className="text-primary">4 Easy Steps</span>
             </h2>
             <p className="mx-auto mt-4 max-w-2xl text-lg font-normal text-gray-700 lg:text-xl lg:leading-8">
-              Join a <span className="text-primary">TechEase</span> course and equip yourself with the skills you need to land your dream job or start your own business in just four steps.
+              Join a <span className="text-primary">Techease</span> course and equip yourself with the skills you need to land your dream job or start your own business in just four steps.
             </p>
           </div>
           <ul className="mx-auto mt-12 grid max-w-md grid-cols-1 gap-10 sm:mt-16 lg:mt-20 lg:max-w-5xl lg:grid-cols-4">

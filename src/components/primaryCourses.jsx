@@ -53,7 +53,7 @@ const AccordionCustom = () => {
           >
             {course.title}
           </AccordionHeader>
-          <AccordionBody className="p-5 text-gray-600 leading-relaxed bg-gray-50 rounded-md">
+          <AccordionBody className="p-5 text-md text-gray-600 leading-relaxed bg-gray-50 rounded-md">
             {course.description}
           </AccordionBody>
         </Accordion>

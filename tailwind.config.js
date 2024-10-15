@@ -21,6 +21,8 @@ export default withMT({
         'silver': '#ecebff',
         'bubble-gum': '#ff77e9',
         'bermuda': '#78dcca',
+        'tea-light': '#B2E1D2',  // Replace with your tea-light color
+        'tea-dark': '#00796B',   // Replace with your tea-dark color
       },
     },
   },

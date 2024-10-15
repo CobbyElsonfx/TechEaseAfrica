@@ -76,7 +76,7 @@ const Footer = () => {
             <hr className="container mx-auto my-7"/>
 
             <div className="mt-8 text-center text-sm text-gray-400">
-                &copy; {new Date().getFullYear()} TeachEase Africa. All rights reserved.
+                &copy; {new Date().getFullYear()} Teachease Africa. All rights reserved.
             </div>
         </footer>
     );

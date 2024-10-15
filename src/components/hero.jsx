@@ -1,4 +1,5 @@
 import { Button } from "@material-tailwind/react";
+import { Link } from "react-router-dom";
 
 const Hero = () => {
   return (
@@ -20,9 +21,10 @@ const Hero = () => {
           <p className="py-6 px-[2rem] md:px-0 text-lg sm:text-2xl lg:text-3xl text-white font-light max-w-lg mx-auto">
             Learn digital skills to enhance your career path and shape the future.
           </p>
-          <Button className="mt-4 bg-gradient-to-r from-teal-400 to-blue-500 hover:from-blue-500 hover:to-teal-400 px-8 py-3 rounded-full text-lg shadow-lg transform transition-transform duration-300 hover:scale-105">
+         <Link to="apply">
+         <Button className="mt-4 bg-gradient-to-r from-teal-400 to-blue-500 hover:from-blue-500 hover:to-teal-400 px-8 py-3 rounded-full text-lg shadow-lg transform transition-transform duration-300 hover:scale-105">
             Join Now
-          </Button>
+          </Button></Link>
         </div>
       </div>
 
