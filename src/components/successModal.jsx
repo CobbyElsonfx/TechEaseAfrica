@@ -11,7 +11,7 @@ function SuccessModal({ setShowModal }) {
         </div>
         <h2 className="text-3xl font-bold text-center text-primary mb-4">Success!</h2>
         <p className="text-center text-gray-600 mb-6">
-          Your application has been submitted successfully! TechEase will get in touch with you shortly.
+          Your application has been submitted successfully! Techease will get in touch with you shortly.
         </p>
         
         {/* Button Section */}
